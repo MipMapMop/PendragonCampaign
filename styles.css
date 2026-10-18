@@ -1,0 +1,1009 @@
+
+body {
+    font-family: Georgia, serif;
+    margin: 0;
+    color: #30291f;
+    background: #f4efe5;
+}
+
+header {
+    padding: 20px 24px;
+    background: #e5dac5;
+    border-bottom: 1px solid #b9aa91;
+}
+
+header h1 {
+    margin: 0 0 4px;
+    font-size: 28px;
+}
+
+header p {
+    margin: 0;
+}
+
+
+/* Vertical icon tabs */
+nav {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+    width: 76px;
+    min-width: 76px;
+    padding: 16px 8px;
+    background: #eee5d6;
+    border-right: 1px solid #cfc2ad;
+}
+
+nav button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    min-height: 62px;
+    padding: 8px 2px;
+    font: inherit;
+    font-size: 11px;
+    line-height: 1.2;
+    color: #30291f;
+    background: transparent;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
+nav button:hover,
+nav button[aria-current="page"] {
+    background: #d8c9ae;
+    border-color: #b9aa91;
+}
+
+.tab-icon {
+    font-size: 23px;
+    line-height: 1;
+}
+
+.tab-label {
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+
+
+
+main {
+    flex: 1;
+    min-width: 0;
+    max-width: none;
+    margin: 0;
+    padding: 20px 24px;
+}
+
+
+[hidden] {
+    display: none !important;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 20px;
+}
+
+.form-grid label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-weight: bold;
+}
+
+.form-grid input,
+.form-grid textarea {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #b9aa91;
+    background: #fffdf8;
+    color: #30291f;
+    font: inherit;
+}
+
+.form-grid textarea {
+    resize: vertical;
+}
+
+.form-grid .full-width {
+    grid-column: 1 / -1;
+}
+
+@media (max-width: 650px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-grid .full-width {
+        grid-column: auto;
+    }
+}
+
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}
+
+#save-status {
+    font-size: 14px;
+    color: #466747;
+    white-space: nowrap;
+}
+
+@media (max-width: 500px) {
+    header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+/* Play screen: character identity */
+.identity-panel {
+    padding: 18px 22px;
+    margin-top: 20px;
+    background: #eee5d6;
+    border: 1px solid #cfc2ad;
+    border-left: 4px solid #8b7653;
+}
+
+.identity-panel h3 {
+    margin: 0 0 8px;
+    font-size: 24px;
+    font-weight: normal;
+}
+
+.identity-panel p {
+    margin: 5px 0;
+    line-height: 1.5;
+}
+
+#play-character-summary {
+    color: #665844;
+    font-style: italic;
+}
+
+#play-character-status {
+    font-size: 14px;
+}
+
+/* Play screen: characteristics */
+.characteristics-panel {
+    margin-top: 20px;
+    padding: 18px 22px;
+    background: #eee5d6;
+    border: 1px solid #cfc2ad;
+}
+
+.characteristics-panel h3 {
+    margin: 0 0 16px;
+    font-size: 20px;
+    font-weight: normal;
+}
+
+.characteristics-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.characteristics-grid label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.characteristics-grid input {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px 8px;
+    border: 1px solid #b9aa91;
+    background: #fffdf8;
+    color: #30291f;
+    font: inherit;
+}
+
+@media (max-width: 650px) {
+    .characteristics-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* Play screen: condition and wounds */
+.condition-panel {
+    margin-top: 20px;
+    padding: 18px 22px;
+    background: #eee5d6;
+    border: 1px solid #cfc2ad;
+}
+
+.condition-panel h3 {
+    margin: 0 0 16px;
+    font-size: 20px;
+    font-weight: normal;
+}
+
+.condition-panel h4 {
+    margin: 24px 0 12px;
+    font-size: 17px;
+    font-weight: normal;
+}
+
+
+/* Condition: hit points and wounds */
+.condition-layout {
+    display: grid;
+    grid-template-columns: minmax(150px, 0.9fr) minmax(0, 1.1fr);
+    gap: 18px;
+    align-items: start;
+}
+
+.current-hp-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.current-hp-title {
+    align-self: center;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#current-hp {
+    box-sizing: border-box;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    min-height: 150px;
+    padding: 12px;
+    border: 2px solid #b9aa91;
+    border-radius: 8px;
+    background: #fffdf8;
+    color: #30291f;
+    font: inherit;
+    font-size: 48px;
+    text-align: center;
+
+    display: grid;
+    place-items: center;
+}
+
+.debilitated-control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.debilitated-control input {
+    flex: 0 0 auto;
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    accent-color: #6f5940;
+}
+
+.wounds-area h4 {
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+.wounds-list {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.wound-row {
+    display: grid;
+    grid-template-columns: 85px minmax(0, 1fr);
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.wounds-list label {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.wounds-list input {
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    padding: 5px 8px;
+    border: 1px solid #b9aa91;
+    background: #fffdf8;
+    color: #30291f;
+    font: inherit;
+}
+
+@media (max-width: 650px) {
+    .condition-layout {
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+        gap: 12px;
+    }
+
+    #current-hp {
+        min-height: 110px;
+        font-size: 36px;
+    }
+
+}
+
+/* Play screen: pinned skills */
+.pinned-skills-panel {
+    margin-top: 20px;
+    padding: 18px 22px;
+    background: #eee5d6;
+    border: 1px solid #cfc2ad;
+}
+
+.pinned-skills-panel h3 {
+    margin: 0 0 12px;
+    font-size: 20px;
+    font-weight: normal;
+}
+
+.empty-message {
+    margin: 0;
+    color: #665844;
+    font-style: italic;
+    line-height: 1.5;
+}
+
+/* Play screen: personality traits */
+.traits-panel {
+    margin-top: 20px;
+    padding: 18px 22px;
+    background: #eee5d6;
+    border: 1px solid #cfc2ad;
+}
+
+.traits-panel h3 {
+    margin: 0 0 16px;
+    font-size: 20px;
+    font-weight: normal;
+}
+
+.traits-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px 24px;
+}
+
+.trait-pair {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 32px minmax(0, 1fr);
+    align-items: center;
+    gap: 6px;
+    padding: 8px 0;
+    border-bottom: 1px solid #d8cbb6;
+    font-size: 14px;
+}
+
+.trait-pair span:last-child {
+    text-align: right;
+}
+
+.trait-pair strong {
+    text-align: center;
+    font-weight: normal;
+}
+
+@media (max-width: 650px) {
+    .traits-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* Overall layout: vertical tabs beside the character sheet */
+.app-layout {
+    display: flex;
+    align-items: stretch;
+    min-height: calc(100vh - 85px);
+}
+
+/* Main content fills the space beside the tabs */
+main {
+    flex: 1;
+    min-width: 0;
+    max-width: none;
+    margin: 0;
+    padding: 20px 24px;
+}
+
+
+/* Landscape character sheet */
+.play-sheet {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.3fr) minmax(0, 0.9fr);
+    gap: 12px;
+    align-items: start;
+}
+
+.sheet-column {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 0;
+}
+
+.sheet-panel {
+    min-width: 0;
+    padding: 12px;
+    background: #eee5d6;
+    border: 1px solid #cfc2ad;
+}
+
+.sheet-panel h3 {
+    margin: 0 0 10px;
+    font-size: 17px;
+    font-weight: normal;
+}
+
+.sheet-panel h4 {
+    margin: 12px 0 6px;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.sheet-panel input,
+.sheet-panel textarea {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 7px;
+    border: 1px solid #b9aa91;
+    background: #fffdf8;
+    color: #30291f;
+    font: inherit;
+}
+
+.sheet-panel label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.escutcheon-placeholder {
+    min-height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px dashed #b9aa91;
+    color: #665844;
+    background: #f4efe5;
+    font-size: 13px;
+}
+
+.play-sheet .traits-list {
+    grid-template-columns: 1fr;
+    gap: 2px;
+}
+
+.play-sheet .trait-pair {
+    font-size: 12px;
+    padding: 5px 0;
+}
+
+.play-sheet .characteristics-grid {
+    gap: 6px;
+}
+
+.play-sheet .characteristics-grid input {
+    padding: 7px 4px;
+}
+
+.play-sheet .derived-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.play-sheet .derived-value {
+    padding: 7px;
+    background: #f4efe5;
+    border: 1px solid #cfc2ad;
+}
+
+.play-sheet .derived-value span {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 12px;
+}
+
+.play-sheet .derived-value strong {
+    font-weight: normal;
+    font-size: 17px;
+}
+
+.play-sheet .wounds-list {
+    gap: 0px;
+}
+
+.passion-placeholder {
+    padding: 5px 0;
+    font-size: 12px;
+    color: #665844;
+    font-style: italic;
+}
+
+@media (max-width: 1000px) {
+    .play-sheet {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+    }
+
+    .right-column {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 650px) {
+    .play-sheet {
+        grid-template-columns: 1fr;
+    }
+
+    .right-column {
+        grid-column: auto;
+    }
+}
+
+
+
+/* Trait pair: compact slider, more room for names and values */
+
+/* Trait pair: names at the edges, slider centred */
+.play-sheet .trait-control {
+    display: grid;
+    grid-template-columns: auto auto minmax(40px, 1fr) auto auto;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 0;
+    border-bottom: 1px solid #d8cbb6;
+}
+
+.play-sheet .trait-values {
+    display: contents;
+}
+
+.play-sheet .trait-values label:first-child {
+    grid-column: 2;
+    grid-row: 1;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 7px;
+    margin: 0;
+    white-space: nowrap;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.play-sheet .trait-values label:last-child {
+    grid-column: 4;
+    grid-row: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 7px;
+    margin: 0;
+    white-space: nowrap;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.play-sheet .trait-values label input {
+    width: 44px;
+    min-width: 44px;
+    height: 30px;
+    flex: 0 0 44px;
+    box-sizing: border-box;
+    padding: 3px;
+    text-align: center;
+    font-size: 15px;
+}
+
+.play-sheet .trait-slider {
+    grid-column: 3;
+    grid-row: 1;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    accent-color: #8b7653;
+}
+
+.play-sheet .trait-check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+.play-sheet .trait-left-check {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.play-sheet .trait-right-check {
+    grid-column: 5;
+    grid-row: 1;
+}
+
+/* Passion rows: align all controls in a consistent line */
+.passions-panel .passion-row {
+    display: grid;
+    grid-template-columns: 22px minmax(0, 1fr) minmax(0, 1.3fr) 55px;
+    align-items: center;
+    gap: 6px;
+    margin: 8px 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.passions-panel .passion-check {
+    justify-self: center;
+    margin: 0;
+}
+
+.passions-panel .passion-type,
+.passions-panel .passion-object,
+.passions-panel .passion-score {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.passions-panel .passion-score {
+    text-align: center;
+}
+
+/* Compact Blazon and Ideal fields */
+.compact-text-panel label {
+    margin-bottom: 3px;
+}
+
+.compact-text-panel input {
+    margin-bottom: 0;
+}
+
+.compact-text-panel .ideal-label {
+    margin-top: 10px;
+}
+
+/* Escutcheon image area */
+.escutcheon-placeholder {
+    cursor: pointer;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+#escutcheon-image {
+    display: block;
+    max-width: 100%;
+    max-height: 240px;
+    object-fit: contain;
+}
+
+#escutcheon-prompt small {
+    display: block;
+    margin-top: 6px;
+    font-size: 11px;
+    font-weight: normal;
+    color: #665844;
+}
+
+
+/* Skill lists on the Play sheet */
+.skill-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 4px 12px;
+}
+
+.skill-row {
+    display: grid;
+    grid-template-columns: 20px minmax(0, 1fr) 42px;
+    align-items: center;
+    gap: 5px;
+    min-width: 0;
+}
+
+
+.skill-name {
+    min-width: 0;
+    font-size: 0.85rem;
+}
+
+.skill-score {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+.skill-check-label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.skill-check {
+    margin: 0;
+}
+
+
+/* Skills reference catalogue */
+
+#skill-reference-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    align-items: start;
+}
+
+.skill-reference-card {
+    border: 1px solid #d4cbbb;
+    border-radius: 6px;
+    padding: 12px;
+    min-width: 0;
+}
+
+.skill-reference-card h3 {
+    margin: 0 0 4px;
+}
+
+.skill-reference-group {
+    margin: 0 0 12px;
+    font-size: 0.85rem;
+    opacity: 0.75;
+}
+
+.skill-reference-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+.skill-reference-field input,
+.skill-reference-field select,
+.skill-reference-field textarea {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.skill-reference-field textarea {
+    resize: vertical;
+}
+
+.skill-reference-controls {
+    margin-bottom: 16px;
+}
+
+@media (max-width: 700px) {
+    #skill-reference-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* Clickable skill reference headings */
+
+.skill-reference-details > summary {
+    cursor: pointer;
+    font-weight: 600;
+    padding: 8px 10px;
+    border-radius: 4px;
+    background: #e8e0d2;
+    border: 1px solid #d4cbbb;
+    list-style-position: inside;
+    transition: background-color 0.15s ease;
+}
+
+.skill-reference-details > summary:hover {
+    background: #dfd3be;
+}
+
+.skill-reference-details > summary:focus-visible {
+    outline: 2px solid #75634c;
+    outline-offset: 2px;
+}
+
+.skill-reference-details[open] > summary {
+    margin-bottom: 12px;
+}
+
+.skill-reference-details > summary::marker {
+    color: #75634c;
+}
+
+.damage-entry {
+    display: grid;
+    grid-template-columns: 85px minmax(0, 1fr);
+    gap: 8px;
+    width: 100%;
+}
+
+
+/* Armour reference tables */
+
+.armour-reference-section {
+    margin: 24px 0;
+    padding: 18px;
+    border: 1px solid #d4c9b8;
+    border-radius: 8px;
+    background: #faf8f3;
+}
+
+.armour-reference-section h4 {
+    margin: 0 0 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #d4c9b8;
+    font-size: 1.15rem;
+    font-weight: 600;
+}
+
+.armour-reference-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 14px;
+    font-size: 0.9rem;
+}
+
+.armour-reference-table th {
+    padding: 10px 8px;
+    text-align: left;
+    background: #e9e1d4;
+    border-bottom: 2px solid #c8baa6;
+    font-weight: 600;
+}
+
+.armour-reference-table td {
+    padding: 3px 5px;
+    border-bottom: 1px solid #e4ddd2;
+    vertical-align: middle;
+}
+
+.armour-reference-table tbody tr:nth-child(even) {
+    background: #f3efe7;
+}
+
+.armour-reference-table input,
+.armour-reference-table select {
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    padding: 7px;
+    border: 1px solid #c9bead;
+    border-radius: 4px;
+    background: #fffdf9;
+    color: inherit;
+    font: inherit;
+}
+
+.armour-reference-table select[multiple] {
+    min-width: 100px;
+    height: 36px;
+    padding: 2px 4px;
+}
+
+.armour-reference-table input:focus,
+.armour-reference-table select:focus {
+    outline: 2px solid #8c795f;
+    outline-offset: 1px;
+}
+
+.armour-reference-section button {
+    padding: 7px 12px;
+    border: 1px solid #b9aa95;
+    border-radius: 5px;
+    background: #e9e1d4;
+    color: #30291f;
+    font: inherit;
+    cursor: pointer;
+}
+
+.armour-reference-section button:hover {
+    background: #ddd0bd;
+}
+
+
+/* Character sheet armour panel */
+
+#character-armour {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(150px, 2fr);
+    gap: 18px;
+    align-items: stretch;
+}
+
+.character-armour-field {
+    display: grid;
+    grid-template-columns: minmax(105px, 1fr) minmax(0, 1.5fr) 28px;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.character-armour-field label {
+    font-size: 0.9rem;
+}
+
+.character-armour-field select {
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    padding: 6px;
+    border: 1px solid #c9bead;
+    border-radius: 4px;
+    background: #fffdf9;
+    font: inherit;
+}
+
+.character-armour-field output {
+    text-align: right;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+}
+
+.character-armour-total {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    min-height: 180px;
+    padding: 12px;
+    border: 2px solid #b9aa91;
+    border-radius: 8px;
+    background: #fffdf8;
+    color: #30291f;
+    text-align: center;
+}
+
+.character-armour-total strong {
+    font-size: 0.9rem;
+    letter-spacing: 0.04em;
+}
+
+#total-armour-protection {
+    font-size: 3rem;
+    font-weight: 600;
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 650px) {
+    #character-armour {
+        grid-template-columns: 1fr;
+    }
+
+    .character-armour-total {
+        min-height: 120px;
+    }
+}

@@ -1,0 +1,870 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendragon Character Manager</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+<header>
+    <div class="header-title">
+        <h1>Pendragon</h1>
+        <p>Sixth Edition Character Manager</p>
+    </div>
+    <div id="save-status" role="status" aria-live="polite">
+        Saved locally
+    </div>
+</header>
+
+<div class="app-layout">
+    
+<nav aria-label="Main navigation">
+    <button data-page="play" aria-current="page" title="Play">
+        <span class="tab-icon" aria-hidden="true">♜</span>
+        <span class="tab-label">Play</span>
+    </button>
+    <button data-page="skills" title="Skills">
+        <span class="tab-icon" aria-hidden="true">✎</span>
+        <span class="tab-label">Skills</span>
+    </button>
+    <button data-page="passions" title="Passions and Traits">
+        <span class="tab-icon" aria-hidden="true">♡</span>
+        <span class="tab-label">Passions &amp; Traits</span>
+    </button>
+    <button data-page="combat" title="Combat and Equipment">
+        <span class="tab-icon" aria-hidden="true">⚔</span>
+        <span class="tab-label">Combat &amp; Equipment</span>
+    </button>
+    <button data-page="family" title="Family and History">
+        <span class="tab-icon" aria-hidden="true">♧</span>
+        <span class="tab-label">Family &amp; History</span>
+    </button>
+    <button data-page="glory" title="Glory Record">
+        <span class="tab-icon" aria-hidden="true">✧</span>
+        <span class="tab-label">Glory Record</span>
+    </button>
+    <button data-page="details" title="Character Details">
+        <span class="tab-icon" aria-hidden="true">♙</span>
+        <span class="tab-label">Character Details</span>
+    </button>
+</nav>
+
+    <main>
+        
+<section id="play">
+    <div class="play-sheet">
+
+        <!-- LEFT COLUMN -->
+        <div class="sheet-column left-column">
+
+    <div class="sheet-panel escutcheon-panel">
+    <h3>Escutcheon</h3>
+
+    <label class="escutcheon-placeholder" for="escutcheon-upload">
+        <span id="escutcheon-prompt">
+           Click to select a shield image
+        <small>Maximum file size: 1 MB</small>
+        </span>
+        <img id="escutcheon-image" alt="Character's escutcheon" hidden>
+    </label>
+    <button type="button" id="remove-escutcheon" hidden>
+    Remove image
+    </button>
+
+    <input type="file" id="escutcheon-upload" accept="image/*" hidden>
+    </div>
+
+            
+            <div class="sheet-panel compact-text-panel">
+               <label for="blazon">Blazon</label>
+                <input type="text" id="blazon" name="blazon"
+                 aria-label="Blazon">
+                 <label class="ideal-label" for="ideal">Ideal</label>
+             <input type="text" id="ideal" name="ideal"
+               aria-label="Ideal">
+                </div>
+            
+<div class="traits-list">
+
+    
+<div class="trait-control" data-trait="chaste" data-left="Chaste" data-right="Lustful">
+    <label class="trait-check">
+        <input type="checkbox" class="trait-left-check" aria-label="Mark Chaste">
+    </label>
+
+    <div class="trait-values">
+        <label>Chaste <input class="trait-left" type="number" min="0" max="20" value="10"></label>
+        <label>Lustful <input class="trait-right" type="number" min="0" max="20" value="10"></label>
+    </div>
+
+    <input class="trait-slider" type="range" min="0" max="20" value="10" aria-label="Chaste to Lustful">
+
+    <label class="trait-check">
+        <input type="checkbox" class="trait-right-check" aria-label="Mark Lustful">
+    </label>
+</div>
+
+
+    <div class="trait-control" data-trait="energetic" data-left="Energetic" data-right="Lazy">
+    <label class="trait-check">
+        <input type="checkbox" class="trait-left-check" aria-label="Mark Energetic">
+    </label>
+    <div class="trait-values">
+        <label>Energetic <input class="trait-left" type="number" min="0" max="20" value="10"></label>
+        <label>Lazy <input class="trait-right" type="number" min="0" max="20" value="10"></label>
+    </div>
+    <input class="trait-slider" type="range" min="0" max="20" value="10" aria-label="Energetic to Lazy">
+    <label class="trait-check">
+        <input type="checkbox" class="trait-right-check" aria-label="Mark Lazy">
+    </label>
+</div>
+
+<div class="trait-control" data-trait="forgiving" data-left="Forgiving" data-right="Vengeful">
+    <label class="trait-check">
+        <input type="checkbox" class="trait-left-check" aria-label="Mark Forgiving">
+    </label>
+    <div class="trait-values">
+        <label>Forgiving <input class="trait-left" type="number" min="0" max="20" value="10"></label>
+        <label>Vengeful <input class="trait-right" type="number" min="0" max="20" value="10"></label>
+    </div>
+    <input class="trait-slider" type="range" min="0" max="20" value="10" aria-label="Forgiving to Vengeful">
+    <label class="trait-check">
+        <input type="checkbox" class="trait-right-check" aria-label="Mark Vengeful">
+    </label>
+</div>
+
+<div class="trait-control" data-trait="generous" data-left="Generous" data-right="Selfish">
+    <label class="trait-check">
+        <input type="checkbox" class="trait-left-check" aria-label="Mark Generous">
+    </label>
+    <div class="trait-values">
+        <label>Generous <input class="trait-left" type="number" min="0" max="20" value="10"></label>
+        <label>Selfish <input class="trait-right" type="number" min="0" max="20" value="10"></label>
+    </div>
+    <input class="trait-slider" type="range" min="0" max="20" value="10" aria-label="Generous to Selfish">
+    <label class="trait-check">
+        <input type="checkbox" class="trait-right-check" aria-label="Mark Selfish">
+    </label>
+</div>
+
+<div class="trait-control" data-trait="honest" data-left="Honest" data-right="Deceitful">
+    <label class="trait-check">
+        <input type="checkbox" class="trait-left-check" aria-label="Mark Honest">
+    </label>
+    <div class="trait-values">
+        <label>Honest <input class="trait-left" type="number" min="0" max="20" value="10"></label>
+        <label>Deceitful <input class="trait-right" type="number" min="0" max="20" value="10"></label>
+    </div>
+    <input class="trait-slider" type="range" min="0" max="20" value="10" aria-label="Honest to Deceitful">
+    <label class="trait-check">
+        <input type="checkbox" class="trait-right-check" aria-label="Mark Deceitful">
+    </label>
+</div>
+
+<div class="trait-control" data-trait="just" data-left="Just" data-right="Arbitrary">
+    <label class="trait-check">
+        <input type="checkbox" class="trait-left-check" aria-label="Mark Just">
+    </label>
+    <div class="trait-values">
+        <label>Just <input class="trait-left" type="number" min="0" max="20" value="10"></label>
+        <label>Arbitrary <input class="trait-right" type="number" min="0" max="20" value="10"></label>
+    </div>
+    <input class="trait-slider" type="range" min="0" max="20" value="10" aria-label="Just to Arbitrary">
+    <label class="trait-check">
+        <input type="checkbox" class="trait-right-check" aria-label="Mark Arbitrary">
+    </label>
+</div>
+
+<div class="trait-control" data-trait="merciful" data-left="Merciful" data-right="Cruel">
+    <label class="trait-check">
+        <input type="checkbox" class="trait-left-check" aria-label="Mark Merciful">
+    </label>
+    <div class="trait-values">
+        <label>Merciful <input class="trait-left" type="number" min="0" max="20" value="10"></label>
+        <label>Cruel <input class="trait-right" type="number" min="0" max="20" value="10"></label>
+    </div>
+    <input class="trait-slider" type="range" min="0" max="20" value="10" aria-label="Merciful to Cruel">
+    <label class="trait-check">
+        <input type="checkbox" class="trait-right-check" aria-label="Mark Cruel">
+    </label>
+</div>
+
+<div class="trait-control" data-trait="modest" data-left="Modest" data-right="Proud">
+    <label class="trait-check">
+        <input type="checkbox" class="trait-left-check" aria-label="Mark Modest">
+    </label>
+    <div class="trait-values">
+        <label>Modest <input class="trait-left" type="number" min="0" max="20" value="10"></label>
+        <label>Proud <input class="trait-right" type="number" min="0" max="20" value="10"></label>
+    </div>
+    <input class="trait-slider" type="range" min="0" max="20" value="10" aria-label="Modest to Proud">
+    <label class="trait-check">
+        <input type="checkbox" class="trait-right-check" aria-label="Mark Proud">
+    </label>
+</div>
+
+<div class="trait-control" data-trait="prudent" data-left="Prudent" data-right="Reckless">
+    <label class="trait-check">
+        <input type="checkbox" class="trait-left-check" aria-label="Mark Prudent">
+    </label>
+    <div class="trait-values">
+        <label>Prudent <input class="trait-left" type="number" min="0" max="20" value="10"></label>
+        <label>Reckless <input class="trait-right" type="number" min="0" max="20" value="10"></label>
+    </div>
+    <input class="trait-slider" type="range" min="0" max="20" value="10" aria-label="Prudent to Reckless">
+    <label class="trait-check">
+        <input type="checkbox" class="trait-right-check" aria-label="Mark Reckless">
+    </label>
+</div>
+
+<div class="trait-control" data-trait="spiritual" data-left="Spiritual" data-right="Worldly">
+    <label class="trait-check">
+        <input type="checkbox" class="trait-left-check" aria-label="Mark Spiritual">
+    </label>
+    <div class="trait-values">
+        <label>Spiritual <input class="trait-left" type="number" min="0" max="20" value="10"></label>
+        <label>Worldly <input class="trait-right" type="number" min="0" max="20" value="10"></label>
+    </div>
+    <input class="trait-slider" type="range" min="0" max="20" value="10" aria-label="Spiritual to Worldly">
+    <label class="trait-check">
+        <input type="checkbox" class="trait-right-check" aria-label="Mark Worldly">
+    </label>
+</div>
+
+<div class="trait-control" data-trait="temperate" data-left="Temperate" data-right="Indulgent">
+    <label class="trait-check">
+        <input type="checkbox" class="trait-left-check" aria-label="Mark Temperate">
+    </label>
+    <div class="trait-values">
+        <label>Temperate <input class="trait-left" type="number" min="0" max="20" value="10"></label>
+        <label>Indulgent <input class="trait-right" type="number" min="0" max="20" value="10"></label>
+    </div>
+    <input class="trait-slider" type="range" min="0" max="20" value="10" aria-label="Temperate to Indulgent">
+    <label class="trait-check">
+        <input type="checkbox" class="trait-right-check" aria-label="Mark Indulgent">
+    </label>
+</div>
+
+<div class="trait-control" data-trait="trusting" data-left="Trusting" data-right="Suspicious">
+    <label class="trait-check">
+        <input type="checkbox" class="trait-left-check" aria-label="Mark Trusting">
+    </label>
+    <div class="trait-values">
+        <label>Trusting <input class="trait-left" type="number" min="0" max="20" value="10"></label>
+        <label>Suspicious <input class="trait-right" type="number" min="0" max="20" value="10"></label>
+    </div>
+    <input class="trait-slider" type="range" min="0" max="20" value="10" aria-label="Trusting to Suspicious">
+    <label class="trait-check">
+        <input type="checkbox" class="trait-right-check" aria-label="Mark Suspicious">
+    </label>
+</div>
+
+<div class="trait-control" data-trait="valorous" data-left="Valorous" data-right="Cowardly">
+    <label class="trait-check">
+        <input type="checkbox" class="trait-left-check" aria-label="Mark Valorous">
+    </label>
+    <div class="trait-values">
+        <label>Valorous <input class="trait-left" type="number" min="0" max="20" value="10"></label>
+        <label>Cowardly <input class="trait-right" type="number" min="0" max="20" value="10"></label>
+    </div>
+    <input class="trait-slider" type="range" min="0" max="20" value="10" aria-label="Valorous to Cowardly">
+    <label class="trait-check">
+        <input type="checkbox" class="trait-right-check" aria-label="Mark Cowardly">
+    </label>
+</div> <!-- End Valorous/Cowardly trait -->
+
+</div> <!-- End traits-list -->
+            
+        <div class="sheet-panel">
+             <h3>Directed Traits</h3>
+             <label>Directed Trait 1
+                <input type="text" id="directed-trait-1" name="directedTrait1"
+                      placeholder="e.g. *Suspicious (King Mark) +5">
+             </label>
+            <label>Directed Trait 2
+                <input type="text" id="directed-trait-2" name="directedTrait2"
+            placeholder="e.g. *Trusting (a group) +3">
+            </label>
+        </div>
+
+
+        </div>
+
+        <!-- CENTRE COLUMN -->
+        <div class="sheet-column centre-column">
+
+            
+         <div class="identity-panel">
+           <h3 id="play-character-name">Unnamed Character</h3>
+             <p id="play-character-summary">
+                 Culture · Homeland · Religion
+             </p>
+             <p id="play-character-status"></p>
+             <p id="play-character-features"></p>
+         </div>
+
+
+            <div class="sheet-panel">
+                <h3>Characteristics</h3>
+                <div class="characteristics-grid">
+                    <label>SIZ<input type="number" name="siz" min="1"></label>
+                    <label>DEX<input type="number" name="dex" min="1"></label>
+                    <label>STR<input type="number" name="str" min="1"></label>
+                    <label>CON<input type="number" name="con" min="1"></label>
+                    <label>APP<input type="number" name="app" min="1"></label>
+                </div>
+            </div>
+
+            
+<div class="sheet-panel derived-panel">
+    <h3>Derived Characteristics</h3>
+
+    <div class="derived-grid">
+        <div class="derived-value">
+            <span class="derived-label" title="Knockdown = SIZ">Knockdown</span>
+            <strong id="derived-knockdown">—</strong>
+        </div>
+
+        <div class="derived-value">
+            <span class="derived-label" title="Weapon Damage = (STR + SIZ) / 6">Weapon Damage</span>
+            <strong id="derived-weapon-damage">—</strong>
+        </div>
+
+        <div class="derived-value">
+            <span class="derived-label" title="Brawling Damage = (STR + SIZ) / 6">Brawling Damage</span>
+            <strong id="derived-brawling-damage">—</strong>
+        </div>
+
+        <div class="derived-value">
+            <span class="derived-label" title="Movement Rate = ((STR + DEX) / 2) + 5">Movement Rate</span>
+            <strong id="derived-movement">—</strong>
+        </div>
+
+        <div class="derived-value">
+            <span class="derived-label" title="Major Wound = CON">Major Wound</span>
+            <strong id="major-wound-threshold">—</strong>
+        </div>
+
+        <div class="derived-value">
+            <span class="derived-label" title="Healing Rate = CON / 5">Healing Rate</span>
+            <strong id="derived-healing">—</strong>
+        </div>
+
+        <div class="derived-value">
+            <span class="derived-label" title="Total Hit Points = CON + SIZ">Total Hit Points</span>
+            <strong id="derived-hit-points">—</strong>
+        </div>
+
+        <div class="derived-value">
+            <span class="derived-label" title="Unconscious = Total Hit Points / 4">Unconscious</span>
+            <strong id="unconscious-threshold">—</strong>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="sheet-panel condition-panel">
+    <h3>Condition</h3>
+
+    <div class="condition-layout">
+        <div class="current-hp-area">
+            <div class="current-hp-title">
+                Current / Total Hit Points
+            </div>
+
+            <output id="current-hp" aria-label="Current Hit Points">—</output>
+
+<div class="additional-damage">
+    <div class="additional-damage-row">
+        <label for="aggravation-damage">Aggravation Damage</label>
+        <div class="damage-entry">
+            <input
+                type="number"
+                id="aggravation-damage"
+                min="0"
+                step="1"
+                placeholder="0"
+                aria-label="Aggravation damage amount"
+            >
+            <input
+                type="text"
+                id="aggravation-description"
+                placeholder="Description"
+                aria-label="Aggravation damage description"
+            >
+        </div>
+    </div>
+
+    <div class="additional-damage-row">
+        <label for="deterioration-damage">Deterioration Damage</label>
+        <div class="damage-entry">
+            <input
+                type="number"
+                id="deterioration-damage"
+                min="0"
+                step="1"
+                placeholder="0"
+                aria-label="Deterioration damage amount"
+            >
+            <input
+                type="text"
+                id="deterioration-description"
+                placeholder="Description"
+                aria-label="Deterioration damage description"
+            >
+        </div>
+    </div>
+</div>
+
+            <label class="debilitated-control">
+                <input type="checkbox" id="debilitated">
+                <span>Debilitated</span>
+            </label>
+        </div>
+
+        <div class="wounds-area">
+            <h4>Wounds</h4>
+
+            <div class="wounds-list">
+                <div class="wound-row">
+                    <input type="number" name="wound1Damage" min="0" step="1" placeholder="Damage" aria-label="Wound 1 damage">
+                    <input type="text" name="wound1Description" placeholder="Wound description" aria-label="Wound 1 description">
+                </div>
+                <div class="wound-row">
+                    <input type="number" name="wound2Damage" min="0" step="1" placeholder="Damage" aria-label="Wound 2 damage">
+                    <input type="text" name="wound2Description" placeholder="Wound description" aria-label="Wound 2 description">
+                </div>
+                <div class="wound-row">
+                    <input type="number" name="wound3Damage" min="0" step="1" placeholder="0" aria-label="Wound 3 damage">
+                    <input type="text" name="wound3Description" placeholder="Wound description" aria-label="Wound 3 description">
+                </div>
+                <div class="wound-row">
+                    <input type="number" name="wound4Damage" min="0" step="1" placeholder="0" aria-label="Wound 4 damage">
+                    <input type="text" name="wound4Description" placeholder="Wound description" aria-label="Wound 4 description">
+                </div>
+                <div class="wound-row">
+                    <input type="number" name="wound5Damage" min="0" step="1" placeholder="0" aria-label="Wound 5 damage">
+                    <input type="text" name="wound5Description" placeholder="Wound description" aria-label="Wound 5 description">
+                </div>
+                <div class="wound-row">
+                    <input type="number" name="wound6Damage" min="0" step="1" placeholder="0" aria-label="Wound 6 damage">
+                    <input type="text" name="wound6Description" placeholder="Wound description" aria-label="Wound 6 description">
+                </div>
+                <div class="wound-row">
+                    <input type="number" name="wound7Damage" min="0" step="1" placeholder="0" aria-label="Wound 7 damage">
+                    <input type="text" name="wound7Description" placeholder="Wound description" aria-label="Wound 7 description">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="sheet-panel">
+    <h3>Armour</h3>
+    
+<div id="character-armour">
+    <div class="character-armour-list">
+
+        <div class="character-armour-field">
+            <label for="armour-helm">Helm</label>
+            <select id="armour-helm">
+                <option value="">None selected</option>
+            </select>
+            <output id="armour-helm-points">—</output>
+        </div>
+
+        <div class="character-armour-field">
+            <label for="armour-padding">Padding / Textile</label>
+            <select id="armour-padding">
+                <option value="">None selected</option>
+            </select>
+            <output id="armour-padding-points">—</output>
+        </div>
+
+        <div class="character-armour-field">
+            <label for="armour-body">Mail / Plate</label>
+            <select id="armour-body">
+                <option value="">None selected</option>
+            </select>
+            <output id="armour-body-points">—</output>
+        </div>
+
+        <div class="character-armour-field">
+            <label for="armour-shield">Shield</label>
+            <select id="armour-shield">
+                <option value="">None selected</option>
+            </select>
+            <output id="armour-shield-points">—</output>
+        </div>
+
+    </div>
+
+    <div class="character-armour-total">
+        <strong>Total Armour Protection</strong>
+        <output id="total-armour-protection">0</output>
+    </div>
+</div>
+</div>
+
+            <div class="sheet-panel">
+                <h3>Weapons</h3>
+                <p class="empty-message">Weapon details will appear here.</p>
+            </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN -->
+        <div class="sheet-column right-column">
+
+            <div class="sheet-panel">
+                <h3>Glory and Honour</h3>
+                <p>Total Glory: <strong id="total-glory">—</strong></p>
+                <p>Honour: <strong id="total-honour">—</strong></p>
+            </div>
+
+            <div class="sheet-panel">
+                <h3>Session Glory</h3>
+                <strong id="session-glory">—</strong>
+            </div>
+
+            <div class="sheet-panel passions-panel">
+              <h3>Passions</h3>
+
+        <details class="passion-court">
+        <summary>
+            <span>Fidelitas</span>
+            <span class="court-total">Total: <strong id="fidelitas-total">0</strong></span>
+        </summary>
+
+        <div class="passion-rows">
+
+    <div class="passion-row" data-court="fidelitas">
+        <input type="checkbox" class="passion-check" aria-label="Mark Passion 1">
+        <select class="passion-type" aria-label="Passion type">
+            <option value="">Select passion...</option>
+            <option value="Homage">Homage</option>
+            <option value="Fealty">Fealty</option>
+            <option value="Duty">Duty</option>
+            <option value="Loyalty">Loyalty</option>
+        </select>
+        <input type="text" class="passion-object" placeholder="Object of passion" aria-label="Object of Passion">
+        <input type="number" class="passion-score" min="0" max="100" value="0" aria-label="Passion score">
+    </div>
+
+    <div class="passion-row" data-court="fidelitas">
+        <input type="checkbox" class="passion-check" aria-label="Mark Passion 2">
+        <select class="passion-type" aria-label="Passion type">
+            <option value="">Select passion...</option>
+            <option value="Homage">Homage</option>
+            <option value="Fealty">Fealty</option>
+            <option value="Duty">Duty</option>
+            <option value="Loyalty">Loyalty</option>
+        </select>
+        <input type="text" class="passion-object" placeholder="Object of passion" aria-label="Object of Passion">
+        <input type="number" class="passion-score" min="0" max="100" value="0" aria-label="Passion score">
+    </div>
+
+    <div class="passion-row" data-court="fidelitas">
+        <input type="checkbox" class="passion-check" aria-label="Mark Passion 3">
+        <select class="passion-type" aria-label="Passion type">
+            <option value="">Select passion...</option>
+            <option value="Homage">Homage</option>
+            <option value="Fealty">Fealty</option>
+            <option value="Duty">Duty</option>
+            <option value="Loyalty">Loyalty</option>
+        </select>
+        <input type="text" class="passion-object" placeholder="Object of passion" aria-label="Object of Passion">
+        <input type="number" class="passion-score" min="0" max="100" value="0" aria-label="Passion score">
+    </div>
+
+    <div class="passion-row" data-court="fidelitas">
+        <input type="checkbox" class="passion-check" aria-label="Mark Passion 4">
+        <select class="passion-type" aria-label="Passion type">
+            <option value="">Select passion...</option>
+            <option value="Homage">Homage</option>
+            <option value="Fealty">Fealty</option>
+            <option value="Duty">Duty</option>
+            <option value="Loyalty">Loyalty</option>
+        </select>
+        <input type="text" class="passion-object" placeholder="Object of passion" aria-label="Object of Passion">
+        <input type="number" class="passion-score" min="0" max="100" value="0" aria-label="Passion score">
+    </div>
+
+</div>
+        </details>
+
+    
+<details class="passion-court">
+    <summary>
+        <span>Fervor</span>
+        <span class="court-total">Total: <strong id="fervor-total">0</strong></span>
+    </summary>
+
+    <div class="passion-rows">
+        <div class="passion-row" data-court="fervor">
+            <input type="checkbox" class="passion-check" aria-label="Mark Passion 1">
+            <select class="passion-type" aria-label="Passion type">
+                <option value="">Select passion...</option>
+                <option value="Love">Love</option>
+                <option value="Hate">Hate</option>
+            </select>
+            <input type="text" class="passion-object" placeholder="Object of passion" aria-label="Object of Passion">
+            <input type="number" class="passion-score" min="0" max="100" value="0" aria-label="Passion score">
+        </div>
+
+        <div class="passion-row" data-court="fervor">
+            <input type="checkbox" class="passion-check" aria-label="Mark Passion 2">
+            <select class="passion-type" aria-label="Passion type">
+                <option value="">Select passion...</option>
+                <option value="Love">Love</option>
+                <option value="Hate">Hate</option>
+            </select>
+            <input type="text" class="passion-object" placeholder="Object of passion" aria-label="Object of Passion">
+            <input type="number" class="passion-score" min="0" max="100" value="0" aria-label="Passion score">
+        </div>
+    </div>
+</details>
+
+
+    
+<details class="passion-court">
+    <summary>
+        <span>Adoratio</span>
+        <span class="court-total">Total: <strong id="adoratio-total">0</strong></span>
+    </summary>
+
+    <div class="passion-rows">
+        <div class="passion-row" data-court="adoratio">
+            <input type="checkbox" class="passion-check" aria-label="Mark Passion 1">
+            <select class="passion-type" aria-label="Passion type">
+                <option value="">Select passion...</option>
+                <option value="Devotion">Devotion</option>
+                <option value="Adoration">Adoration</option>
+            </select>
+            <input type="text" class="passion-object" placeholder="Object of passion" aria-label="Object of Passion">
+            <input type="number" class="passion-score" min="0" max="100" value="0" aria-label="Passion score">
+        </div>
+
+        <div class="passion-row" data-court="adoratio">
+            <input type="checkbox" class="passion-check" aria-label="Mark Passion 2">
+            <select class="passion-type" aria-label="Passion type">
+                <option value="">Select passion...</option>
+                <option value="Devotion">Devotion</option>
+                <option value="Adoration">Adoration</option>
+            </select>
+            <input type="text" class="passion-object" placeholder="Object of passion" aria-label="Object of Passion">
+            <input type="number" class="passion-score" min="0" max="100" value="0" aria-label="Passion score">
+        </div>
+    </div>
+</details>
+
+    
+<details class="passion-court">
+    <summary>
+        <span>Civilitas</span>
+        <span class="court-total">Total: <strong id="civilitas-total">0</strong></span>
+    </summary>
+
+    <div class="passion-rows">
+        <div class="passion-row" data-court="civilitas">
+            <input type="checkbox" class="passion-check" aria-label="Mark Passion 1">
+            <select class="passion-type" aria-label="Passion type">
+                <option value="">Select passion...</option>
+                <option value="Hospitality">Hospitality</option>
+                <option value="Station">Station</option>
+                <option value="Chivalry">Chivalry</option>
+            </select>
+            <input type="text" class="passion-object" placeholder="Object of passion" aria-label="Object of Passion">
+            <input type="number" class="passion-score" min="0" max="100" value="0" aria-label="Passion score">
+        </div>
+
+        <div class="passion-row" data-court="civilitas">
+            <input type="checkbox" class="passion-check" aria-label="Mark Passion 2">
+            <select class="passion-type" aria-label="Passion type">
+                <option value="">Select passion...</option>
+                <option value="Hospitality">Hospitality</option>
+                <option value="Station">Station</option>
+                <option value="Chivalry">Chivalry</option>
+            </select>
+            <input type="text" class="passion-object" placeholder="Object of passion" aria-label="Object of Passion">
+            <input type="number" class="passion-score" min="0" max="100" value="0" aria-label="Passion score">
+        </div>
+
+        <div class="passion-row" data-court="civilitas">
+            <input type="checkbox" class="passion-check" aria-label="Mark Passion 3">
+            <select class="passion-type" aria-label="Passion type">
+                <option value="">Select passion...</option>
+                <option value="Hospitality">Hospitality</option>
+                <option value="Station">Station</option>
+                <option value="Chivalry">Chivalry</option>
+            </select>
+            <input type="text" class="passion-object" placeholder="Object of passion" aria-label="Object of Passion">
+            <input type="number" class="passion-score" min="0" max="100" value="0" aria-label="Passion score">
+        </div>
+    </div>
+</details>
+
+
+</div>
+
+            <div class="sheet-panel">
+    <h3>Non-combat Skills</h3>
+    <div id="non-combat-skills" class="skill-list">
+        <p class="empty-message">Loading skills...</p>
+    </div>
+</div>
+
+<div class="sheet-panel">
+    <h3>Combat Skills</h3>
+    <div id="combat-skills" class="skill-list">
+        <p class="empty-message">Loading skills...</p>
+    </div>
+</div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<section id="skills" hidden>
+    <h2>Skills Reference</h2>
+
+    <div class="skill-reference-controls">
+        <label>
+            Skill group
+            <select id="skill-group-filter">
+                <option value="All">All skills</option>
+                <option value="Non-combat">Non-combat</option>
+                <option value="Combat">Combat</option>
+            </select>
+        </label>
+    </div>
+
+    <div id="skill-reference-list">
+        <p class="empty-message">Loading skills...</p>
+    </div>
+</section>
+
+        <section id="passions" hidden>
+            <h2>Passions &amp; Traits</h2>
+            <p>Your Passions and Personality Traits will appear here.</p>
+        </section>
+
+<section id="combat" hidden>
+    <h2>Combat &amp; Equipment</h2>
+
+    <div class="combat-section">
+        <h3>Armour Reference</h3>
+        <p>
+            Add and maintain the armour options available to your characters.
+            Your reference data will be saved locally.
+        </p>
+
+        <div id="armour-reference">
+            <p class="empty-message">
+                Armour reference tables will appear here.
+            </p>
+        </div>
+    </div>
+</section>
+
+        <section id="family" hidden>
+            <h2>Family &amp; History</h2>
+            <p>Your family and character history will appear here.</p>
+        </section>
+
+        <section id="glory" hidden>
+            <h2>Glory Record</h2>
+            <p>Your Glory records will appear here.</p>
+        </section>
+
+        
+        
+         <section id="details" hidden>
+             <h2>Character Details</h2>
+
+              <form id="identity-form">
+            <div class="form-grid">
+            <label>
+                Character name
+                <input type="text" name="characterName">
+            </label>
+
+            <label>
+                Player name
+                <input type="text" name="playerName">
+            </label>
+
+            <label>
+                Gender
+                <input type="text" name="gender">
+            </label>
+
+            <label>
+                Born
+                <input type="number" name="yearOfBirth">
+            </label>
+
+            
+            <label>
+              Heir?
+              <select name="heir">
+                <option value="">Select...</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </select>
+            </label>
+
+
+            <label>
+                Culture
+                <input type="text" name="culture">
+            </label>
+
+            <label>
+                Homeland
+                <input type="text" name="homeland">
+            </label>
+
+            <label>
+                Religion
+                <input type="text" name="religion">
+            </label>
+
+            <label>
+                Class
+                <input type="text" name="socialStatus">
+            </label>
+
+            <label>
+                Lord
+                <input type="text" name="liegeLord">
+            </label>
+
+            <label class="full-width">
+                Distinctive features
+                <textarea name="distinctiveFeatures" rows="3"></textarea>
+            </label>
+
+            <label class="full-width">
+                Personal background
+                <textarea name="personalBackground" rows="5"></textarea>
+            </label>
+        </div>
+    </form>
+    </section>
+
+            </main>
+</div>
+
+    <script src="app.js"></script>
+    <script src="character-options.js"></script>
+</body>
+</html>
