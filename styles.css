@@ -1,10 +1,15 @@
 
+
 body {
-    font-family: Georgia, serif;
+    font-family: 'IM Fell English', serif;
     margin: 0;
     color: #30291f;
-    background: #f4efe5;
+    background-color: #f4efe5;
+    background-image: url("paper-texture.png");
+    background-repeat: repeat;
+    background-position: top left;
 }
+
 
 header {
     padding: 20px 24px;
@@ -569,8 +574,6 @@ main {
 
 
 
-/* Trait pair: compact slider, more room for names and values */
-
 /* Trait pair: names at the edges, slider centred */
 .play-sheet .trait-control {
     display: grid;
@@ -580,6 +583,7 @@ main {
     padding: 6px 0;
     border-bottom: 1px solid #d8cbb6;
 }
+
 
 .play-sheet .trait-values {
     display: contents;
@@ -623,6 +627,7 @@ main {
     font-size: 15px;
 }
 
+
 .play-sheet .trait-slider {
     grid-column: 3;
     grid-row: 1;
@@ -630,8 +635,75 @@ main {
     min-width: 0;
     margin: 0;
     padding: 0;
-    accent-color: #8b7653;
+    accent-color: #72543a;
+    appearance: none;
+    -webkit-appearance: none;
+    background: transparent;
+    cursor: pointer;
 }
+
+
+/* Fine ink line with small arrowheads */
+.play-sheet .trait-slider::-webkit-slider-runnable-track {
+    height: 2px;
+    background: #72543a;
+    border: none;
+    border-radius: 0;
+}
+
+.play-sheet .trait-slider::-moz-range-track {
+    height: 2px;
+    background: #72543a;
+    border: none;
+    border-radius: 0;
+}
+
+/* Small arrowheads at each end */
+
+.play-sheet .trait-slider::-webkit-slider-runnable-track {
+    height: 2px;
+    background: #72543a;
+    border: none;
+    border-radius: 0;
+}
+
+.play-sheet .trait-slider::-moz-range-track {
+    height: 2px;
+    background: #72543a;
+    border: none;
+    border-radius: 0;
+}
+
+
+
+/* Hand-drawn caret control */
+.play-sheet .trait-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 12px;
+    margin-top: -5px;
+    border: none;
+    border-radius: 0;
+    background-color: transparent;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 12'%3E%3Cpath d='M2 10 L8 2 L14 10' fill='none' stroke='%2372543a' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.play-sheet .trait-slider::-moz-range-thumb {
+    width: 16px;
+    height: 12px;
+    border: none;
+    border-radius: 0;
+    background-color: transparent;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 12'%3E%3Cpath d='M2 10 L8 2 L14 10' fill='none' stroke='%2372543a' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
 
 .play-sheet .trait-check {
     display: flex;
@@ -1007,3 +1079,16 @@ main {
         min-height: 120px;
     }
 }
+
+
+
+
+/* Ensure all form controls use the site font */
+input,
+select,
+textarea,
+button {
+    font-family: 'IM Fell English', serif !important;
+}
+
+
